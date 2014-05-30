@@ -45,31 +45,45 @@ def readDataFromCSV(filepath, companyName):
                         column += 1
                 row += 1
             if not flag:
-                print "We don't have the company listed with us. Please try with a different campany name."
+                print "We don't have the company listed with us. Please try with a different company name."
     except IOError:
         print "Can't find the specified file."
 
 
 
 def testCase1():
-    with open("C:\\Users\\nagupta\\Desktop\\b.csv", "r") as f:
+    with open("b.csv", "r") as f:
         reader = csv.reader(f)
         findMaximum("2", reader)
 
 def testCase2():
-    with open("C:\\Users\\nagupta\\Desktop\\b.csv", "r") as f:
+    with open("b.csv", "r") as f:
         reader = csv.reader(f)
         findMaximum("a", reader)
 
 def testCase3():
-    with open("C:\\Users\\nagupta\\Desktop\\b.csv", "r") as f:
+    with open("b.csv", "r") as f:
         reader = csv.reader(f)
         findMaximum(-2, reader)    
 
+##POSITIVE CASES
+readDataFromCSV("b.csv", "Com4")
+readDataFromCSV("b.csv", "Com3")
+
+## Invalid File Name
 readDataFromCSV("x.csv", "Com2")
-readDataFromCSV("C:\\Users\\nagupta\\Desktop\\b.csv", "Com5")
-readDataFromCSV("C:\\Users\\nagupta\\Desktop\\b.csv", "Com3")
+
+## Company not listed in input CSV
+readDataFromCSV("b.csv", "Com5")
+
+## Invalid input (number passed as a string) to the findMaximum function
 testCase1()
+
+## Invalid input(Invalid column number) to the findMaximum function
 testCase2()
+
+## Invalid input (negative column number) to the findMaximum function
 testCase3()
+
+## Invalid reader object to the findMaximum function
 findMaximum(2, None)
